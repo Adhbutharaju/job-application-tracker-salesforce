@@ -1,4 +1,3 @@
-<img width="1882" height="437" alt="Kanban_Board" src="https://github.com/user-attachments/assets/eee2f8cc-9e8f-47a4-80e2-17c52b677ce0" />
 # 🏢 Job Application Tracker — Salesforce CRM Project
 
 A production-quality Salesforce application built to manage 
@@ -154,8 +153,7 @@ sf project deploy start --manifest manifest/package.xml --target-org MyOrg
 ## 📸 Screenshots
 
 ### 🖥️ Kanban Board
-><img width="1897" height="498" alt="image" src="https://github.com/user-attachments/assets/f9dc10ed-2951-40e3-9983-f72efb0e72b0" />
-
+><img width="1882" height="437" alt="Kanban_Board" src="https://github.com/user-attachments/assets/eee2f8cc-9e8f-47a4-80e2-17c52b677ce0" />
 
 ### 📊 Dashboard
 > <img width="1881" height="723" alt="Dashboard" src="https://github.com/user-attachments/assets/ba35f0f3-8d47-45ab-9578-5ff7915894d1" />
