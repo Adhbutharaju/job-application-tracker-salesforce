@@ -1,0 +1,81 @@
+<template>
+    <!-- Button to open form -->
+    <div class="button-container">
+        <lightning-button
+            variant="brand"
+            label="+ New Application"
+            onclick={openModal}>
+        </lightning-button>
+    </div>
+
+    <!-- Modal Form -->
+    <template if:true={isModalOpen}>
+        <section class="modal-overlay">
+            <div class="modal-container">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h2>New Job Application</h2>
+                    <lightning-button-icon
+                        icon-name="utility:close"
+                        onclick={closeModal}
+                        alternative-text="Close">
+                    </lightning-button-icon>
+                </div>
+
+                <!-- Modal Body — Salesforce built-in form -->
+                <div class="modal-body">
+                    <lightning-record-edit-form
+                        object-api-name="Application__c"
+                        onsuccess={handleSuccess}
+                        onerror={handleError}>
+
+                        <lightning-messages></lightning-messages>
+
+                        <lightning-input-field
+                            field-name="Job__c">
+                        </lightning-input-field>
+
+                        <lightning-input-field
+                            field-name="Company__c">
+                        </lightning-input-field>
+
+                        <lightning-input-field
+                            field-name="Status__c"
+                            value="Applied">
+                        </lightning-input-field>
+
+                        <lightning-input-field
+                            field-name="Applied_Date__c">
+                        </lightning-input-field>
+
+                        <lightning-input-field
+                            field-name="Resume_Version__c">
+                        </lightning-input-field>
+
+                        <lightning-input-field
+                            field-name="Notes__c">
+                        </lightning-input-field>
+
+                        <!-- Form Buttons -->
+                        <div class="form-buttons">
+                            <lightning-button
+                                label="Cancel"
+                                onclick={closeModal}
+                                class="cancel-btn">
+                            </lightning-button>
+                            <lightning-button
+                                variant="brand"
+                                type="submit"
+                                label="Save Application">
+                            </lightning-button>
+                        </div>
+
+                    </lightning-record-edit-form>
+                </div>
+
+            </div>
+        </section>
+    </template>
+
+</template>

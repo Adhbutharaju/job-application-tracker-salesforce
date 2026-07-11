@@ -1,0 +1,81 @@
+<template>
+    <div class="stats-container">
+
+        <!-- Header -->
+        <div class="stats-header">
+            📊 Application & Interview Statistics
+        </div>
+
+        <!-- Loading -->
+        <template if:true={isLoading}>
+            <lightning-spinner
+                alternative-text="Loading"
+                size="medium">
+            </lightning-spinner>
+        </template>
+
+        <template if:false={isLoading}>
+
+            <!-- Summary Cards -->
+            <div class="summary-cards">
+                <div class="summary-card blue">
+                    <div class="card-number">{totalApplications}</div>
+                    <div class="card-label">Total Applications</div>
+                </div>
+                <div class="summary-card orange">
+                    <div class="card-number">{totalInterviews}</div>
+                    <div class="card-label">Total Interviews</div>
+                </div>
+                <div class="summary-card green">
+                    <div class="card-number">{passRate}%</div>
+                    <div class="card-label">Pass Rate</div>
+                </div>
+                <div class="summary-card red">
+                    <div class="card-number">{failRate}%</div>
+                    <div class="card-label">Fail Rate</div>
+                </div>
+            </div>
+
+            <!-- Bar Chart — Applications by Status -->
+            <div class="chart-section">
+                <div class="chart-title">Applications by Status</div>
+                <div class="bar-chart">
+                    <template for:each={appStats} for:item="stat">
+                        <div key={stat.status} class="bar-row">
+                            <div class="bar-label">{stat.status}</div>
+                            <div class="bar-wrap">
+                                <div
+                                    class="bar-fill"
+                                    style={stat.barStyle}>
+                                </div>
+                            </div>
+                            <div class="bar-count">{stat.appCount}</div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Pass vs Fail Chart -->
+            <div class="chart-section">
+                <div class="chart-title">Interview Outcomes</div>
+                <div class="outcome-bars">
+                    <div class="outcome-row">
+                        <div class="outcome-label">✅ Passed</div>
+                        <div class="outcome-bar-wrap">
+                            <div class="outcome-bar green-bar" style={passBarStyle}></div>
+                        </div>
+                        <div class="outcome-count">{passed}</div>
+                    </div>
+                    <div class="outcome-row">
+                        <div class="outcome-label">❌ Failed</div>
+                        <div class="outcome-bar-wrap">
+                            <div class="outcome-bar red-bar" style={failBarStyle}></div>
+                        </div>
+                        <div class="outcome-count">{failed}</div>
+                    </div>
+                </div>
+            </div>
+
+        </template>
+    </div>
+</template>

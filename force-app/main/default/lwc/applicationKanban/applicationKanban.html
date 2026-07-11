@@ -1,0 +1,100 @@
+<template>
+    <!-- Loading Spinner -->
+    <template if:true={isLoading}>
+        <lightning-spinner 
+            alternative-text="Loading" 
+            size="medium">
+        </lightning-spinner>
+    </template>
+
+    <!-- Error Message -->
+    <template if:true={errorMessage}>
+        <div class="error-box">
+            ⚠️ {errorMessage}
+        </div>
+    </template>
+
+    <!-- Kanban Board -->
+    <template if:true={hasApplications}>
+        <div class="kanban-board">
+
+            <!-- Applied Column -->
+            <div class="kanban-column">
+                <div class="column-header applied">
+                    Applied ({appliedList.length})
+                </div>
+                <template for:each={appliedList} for:item="app">
+                    <div key={app.Id} class="kanban-card">
+                        <div class="card-title">{app.Job__r.Name}</div>
+                        <div class="card-company">{app.Company__r.Name}</div>
+                        <div class="card-date">{app.Applied_Date__c}</div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Interview Column -->
+            <div class="kanban-column">
+                <div class="column-header interview">
+                    Interview ({interviewList.length})
+                </div>
+                <template for:each={interviewList} for:item="app">
+                    <div key={app.Id} class="kanban-card">
+                        <div class="card-title">{app.Job__r.Name}</div>
+                        <div class="card-company">{app.Company__r.Name}</div>
+                        <div class="card-interviews">
+                            🎤 {app.Interview_Count__c} interview(s)
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Next Round Column -->
+            <div class="kanban-column">
+                <div class="column-header nextround">
+                    Next Round ({nextRoundList.length})
+                </div>
+                <template for:each={nextRoundList} for:item="app">
+                    <div key={app.Id} class="kanban-card">
+                        <div class="card-title">{app.Job__r.Name}</div>
+                        <div class="card-company">{app.Company__r.Name}</div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Offer Received Column -->
+            <div class="kanban-column">
+                <div class="column-header offer">
+                    Offer Received ({offerList.length})
+                </div>
+                <template for:each={offerList} for:item="app">
+                    <div key={app.Id} class="kanban-card">
+                        <div class="card-title">{app.Job__r.Name}</div>
+                        <div class="card-company">{app.Company__r.Name}</div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Rejected Column -->
+            <div class="kanban-column">
+                <div class="column-header rejected">
+                    Rejected ({rejectedList.length})
+                </div>
+                <template for:each={rejectedList} for:item="app">
+                    <div key={app.Id} class="kanban-card">
+                        <div class="card-title">{app.Job__r.Name}</div>
+                        <div class="card-company">{app.Company__r.Name}</div>
+                    </div>
+                </template>
+            </div>
+
+        </div>
+    </template>
+
+    <!-- Empty State -->
+    <template if:false={hasApplications}>
+        <div class="empty-state">
+            📋 No applications found. Start applying!
+        </div>
+    </template>
+
+</template>

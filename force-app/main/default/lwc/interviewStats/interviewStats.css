@@ -1,0 +1,129 @@
+.stats-container {
+    padding: 16px;
+    font-family: sans-serif;
+}
+
+.stats-header {
+    font-size: 16px;
+    font-weight: 600;
+    color: #181818;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.summary-cards {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.summary-card {
+    flex: 1;
+    min-width: 100px;
+    border-radius: 10px;
+    padding: 16px 12px;
+    text-align: center;
+}
+
+.blue   { background: #E6F1FB; }
+.orange { background: #FAEEDA; }
+.green  { background: #E1F5EE; }
+.red    { background: #FAECE7; }
+
+.card-number {
+    font-size: 28px;
+    font-weight: 700;
+    color: #181818;
+}
+
+.card-label {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.chart-section {
+    margin-bottom: 24px;
+}
+
+.chart-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.bar-label {
+    font-size: 12px;
+    color: #555;
+    min-width: 100px;
+}
+
+.bar-wrap {
+    flex: 1;
+    background: #f0f0f0;
+    border-radius: 20px;
+    height: 16px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #1589EE, #0F6E56);
+    transition: width 0.5s ease;
+}
+
+.bar-count {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    min-width: 24px;
+    text-align: right;
+}
+
+.outcome-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.outcome-label {
+    font-size: 12px;
+    min-width: 80px;
+    color: #555;
+}
+
+.outcome-bar-wrap {
+    flex: 1;
+    background: #f0f0f0;
+    border-radius: 20px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.outcome-bar {
+    height: 100%;
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+.green-bar { background: #0F6E56; }
+.red-bar   { background: #993C1D; }
+
+.outcome-count {
+    font-size: 13px;
+    font-weight: 600;
+    min-width: 24px;
+    text-align: right;
+}
