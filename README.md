@@ -1,58 +1,191 @@
-# Salesforce DX Project
+# 🏢 Job Application Tracker — Salesforce CRM Project
 
-Salesforce DX is a development approach that brings source-driven development, team collaboration, and continuous integration to the Salesforce Platform. Instead of working directly in an org through a web browser, you work with metadata as source files in a local DX project, track changes in version control, and deploy through automated processes.
+A production-quality Salesforce application built to manage 
+job applications, interviews, and hiring pipelines end-to-end.
 
-This project template gets you started with the tools and structure you need to build Salesforce applications using source control, scratch orgs, and the Salesforce CLI.
+## 📋 Project Overview
 
-## Prerequisites
+This project demonstrates real-world Salesforce development 
+skills including custom data modeling, Apex automation, 
+Lightning Web Components, and declarative tools.
 
-Before you start, make sure you have:
+## 🏗️ Architecture
 
-- **Salesforce CLI** - Download from [developer.salesforce.com/tools/salesforcecli](https://developer.salesforce.com/tools/salesforcecli). See [Install Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm) for details.
-- **VS Code with Salesforce Extension Pack** - See [Installation Instructions](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/install.html) for details. Includes the Agentforce Vibes extension.
-- **A development org** - Sign up for a free Developer Edition org [here](https://developer.salesforce.com/signup).
-- **Dev Hub enabled** (optional, required to create scratch orgs) - You can enable Dev Hub in your development org under Setup > Dev Hub.  See [Provide Developers Access to Salesforce DX Tools](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_setup_dx_tools.htm).
+### Data Model
+- **Company__c** — Stores company information
+- **Job__c** — Job postings linked to companies  
+- **Application__c** — Core object tracking each application
+- **Interview__c** — Interview rounds (Master-Detail to Application)
 
-## Project Structure
+### Relationships
+Company__c (1)
+└── Job__c (Many)
+└── Application__c (Many)
+└── Interview__c (Many - Master Detail)
 
-Your DX project follows this structure:
+## ⚡ Features Built
 
-- **`force-app/main/default/`** - Your metadata source files live in this default package directory. You can configure additional package directories in the `sfdx-project.json` file.
-- **`config/`** - Scratch org definitions and project settings
-- **`scripts/`** - Automation scripts for common tasks
-- **`sfdx-project.json`** - Project manifest that defines package directories, namespace, API version, and other project-level settings
+### Phase 1 — Data Model
+- 4 Custom Objects with relationships
+- Roll-Up Summary field (Interview Count)
+- Custom Lightning App with navigation
 
-See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm).
+### Phase 2 — Automation
+- **Record-Triggered Flow** — Email alert + Task when interview scheduled
+- **Apex Trigger + Handler Pattern** — Auto-updates Application 
+  status based on Interview outcome
+- **Batch Apex + Scheduler** — Nightly job to auto-close 
+  stale applications
 
-## Get Started
+### Phase 3 — Lightning Web Components
+- **Application Kanban Board** — Visual pipeline by status
+- **Quick Action Form** — Modal form with toast notifications
+- **Interview Stats Chart** — Pass/fail rates and visual charts
 
-Ready to start developing? The [Get Started with Salesforce DX](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_get_started_dx.htm) guide walks you through your first project, from creating a scratch org to creating a simple Apex class or LWC to deploying your code to a sandbox.
+### Phase 4 — Testing
+- 13 Apex test methods across 4 test classes
+- TestDataFactory pattern for reusable test data
+- 88%+ average code coverage
 
-## Common Salesforce CLI Commands
+### Phase 5 — Deployment
+- Reports & Dashboards — 4 reports + 1 dashboard
+- SFDX deployment using Salesforce CLI
+- Full metadata package with package.xml
 
-Here are common CLI commands that you'll use the most:
+## 🛠️ Technologies Used
 
-- `sf org login web`: Authorize an org
-- `sf org open`: Open your org in a browser
-- `sf org create scratch`: Create a scratch org
-- `sf project deploy start`: Deploy metadata to your org
-- `sf project retrieve start`: Retrieve metadata from your org
-- `sf template generate <artifact>`: Scaffold new components, such as Apex classes and triggers, LWC components, Lightning apps, and more
-- `sf apex <command>`: Run Apex tests, run anonymous Apex blocks, and view logs
-- `sf data <command>`: Work with test data
-- `sf alias <command>`: Manage org aliases
-- `sf config <command>`: Configure CLI settings
+| Technology | Usage |
+|---|---|
+| Salesforce Apex | Triggers, Batch, Controllers |
+| Lightning Web Components | UI Components |
+| Flow Builder | Automation |
+| SOQL | Data queries |
+| Salesforce CLI | Deployment |
+| Git/GitHub | Version control |
 
-## Use Agentforce Vibes to Build Lightning Apps
+## 📊 Key Concepts Demonstrated
 
-Transform your ideas into custom Lightning apps that extend CRM workflows directly in Lightning Experience. Through natural conversations with Agentforce Vibes, implement custom objects and fields, complex business logic, and dynamic UI components. See [Build a Lightning App Using Agentforce Vibes](https://developer.salesforce.com/docs/platform/einstein-for-devs/guide/lexapp-overview.html).
+### Apex
+- ✅ Trigger Handler Pattern
+- ✅ Bulkification — Set, Map, List
+- ✅ Governor Limits awareness
+- ✅ Aggregate SOQL + AggregateResult
+- ✅ Wrapper Class pattern
+- ✅ Batch Apex — start, execute, finish
+- ✅ Schedulable Interface + Cron expressions
+- ✅ Database.QueryLocator
+- ✅ Test Data Factory Pattern
+- ✅ System.assertEquals assertions
 
-## Additional Resources
+### LWC
+- ✅ @wire, @api, @track decorators
+- ✅ Imperative Apex calls
+- ✅ for:each and if:true directives
+- ✅ lightning-record-edit-form
+- ✅ ShowToastEvent notifications
+- ✅ NavigationMixin
+- ✅ Getter methods for computed values
+- ✅ Dynamic inline styles
 
-- [Agentforce Vibes Developer Guide](https://developer.salesforce.com/docs/platform/einstein-for-devs/guide/einstein-overview.html)
-- [Salesforce CLI Installation Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/)
-- [Salesforce CLI Plugin Development Guide](https://developer.salesforce.com/docs/platform/salesforce-cli-plugin/guide/conceptual-overview.html)
-- [Salesforce VS Code Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
+### Declarative
+- ✅ Record-Triggered Flows
+- ✅ Email Templates + Email Alerts
+- ✅ Recipient Types — Owner, Related User
+- ✅ Roll-Up Summary fields
+- ✅ Reports — Summary, Matrix formats
+- ✅ Dashboards with multiple chart types
 
+---
+
+## 📁 Project Structure
+force-app/main/default/
+├── classes/
+│   ├── ApplicationKanbanController.cls
+│   ├── InterviewStatsController.cls
+│   ├── InterviewTriggerHandler.cls
+│   ├── StaleApplicationBatch.cls
+│   ├── TestDataFactory.cls
+│   ├── ApplicationKanbanControllerTest.cls
+│   ├── InterviewStatsControllerTest.cls
+│   ├── InterviewTriggerHandlerTest.cls
+│   └── StaleApplicationBatchTest.cls
+├── triggers/
+│   └── InterviewTrigger.trigger
+├── lwc/
+│   ├── applicationKanban/
+│   ├── applicationForm/
+│   └── interviewStats/
+├── objects/
+│   ├── Application__c/
+│   ├── Company__c/
+│   ├── Interview__c/
+│   └── Job__c/
+└── flows/
+└── RT_Interview_Scheduled_Alert.flow-meta.xml
+
+---
+
+## 🚀 Deployment Instructions
+
+### Prerequisites
+- Salesforce CLI installed
+- VS Code with Salesforce Extension Pack installed
+- Developer Edition org authorized
+
+### Steps
+
+```bash
+# Clone repository
+git clone https://github.com/Adhbutharaju/job-application-tracker-salesforce.git
+
+# Navigate to project
+cd job-application-tracker-salesforce
+
+# Authorize your org
+sf org login web --alias MyOrg
+
+# Deploy to org
+sf project deploy start --manifest manifest/package.xml --target-org MyOrg
+```
+
+---
+
+## 📸 Screenshots
+
+### 🖥️ Kanban Board
+> Add screenshot here
+
+### 📊 Dashboard
+> Add screenshot here
+
+### 📈 Interview Stats
+> Add screenshot here
+
+---
+
+## 🎯 What I Learned
+
+Building this project taught me:
+- How to design a complete Salesforce data model from scratch
+- Industry-standard Trigger Handler pattern
+- Bulkification and Governor Limits in real scenarios
+- Building interactive LWC components with real data
+- Professional email automation using Templates and Alerts
+- Batch processing for large data operations
+- Writing proper test classes with high coverage
+- Deploying Salesforce projects using CLI
+
+---
+
+## 👨‍💻 Author
+
+**Raju Chintha**
+Salesforce Developer
+
+[![GitHub](https://img.shields.io/badge/GitHub-Adhbutharaju-blue)](https://github.com/Adhbutharaju)
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
